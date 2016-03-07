@@ -104,9 +104,16 @@ public class MiHashMap
                 cont2++;
             }
             enteros = aux;
-            frases = aux2;
         }
         return rem ;
+    }
+
+    /**
+     * Limpia de objetos el arrayList
+     */
+    public void clear(){
+        enteros =  new int[0];
+        frases = new String[0];
     }
 
 }

@@ -42,6 +42,10 @@ public class MiHashMap
         else{
             int[] otroEntero = new int[enteros.length + 1];        
             String[] otraFrase = new String[enteros.length + 1];
+            for(int cont2 = 0; cont2 < enteros.length; cont2++){
+                    otroEntero[cont2] = enteros[cont2];
+                    otraFrase[cont2] = frases[cont2];
+            }
             otraFrase[cont] = clave;
             otroEntero[cont] = valor;
             frases = otraFrase;
@@ -104,6 +108,7 @@ public class MiHashMap
                 cont2++;
             }
             enteros = aux;
+            frases = aux2;
         }
         return rem ;
     }
@@ -118,7 +123,7 @@ public class MiHashMap
 
     /**
      * Indica si existe un elemento con la clave indicada dentro del repositorio
-     * @param elemento número del que se desea saber si existe
+     * @param clave frase de la que se desea saber si existe
      * @return devuelve true si encuentra una coincidencia, sino devuelbe false
      */
     public boolean containsKey(String clave){
@@ -126,6 +131,21 @@ public class MiHashMap
         int cont = 0;
         while(cont < frases.length && !exist){
             if(frases[cont] == clave){exist = true;}
+            cont++;
+        }
+        return exist;
+    }
+
+    /**
+     * Indica si existe un elemento con el valor dado dentro del repositorio
+     * @param valor número del que se desea saber si existe
+     * @return devuelve true si encuentra una coincidencia, sino devuelbe false
+     */
+    public boolean containsValue(int valor){
+        boolean exist = false;
+        int cont = 0;
+        while(cont < enteros.length && !exist){
+            if(enteros[cont] == valor){exist = true;}
             cont++;
         }
         return exist;

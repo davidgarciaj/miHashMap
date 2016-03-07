@@ -116,4 +116,19 @@ public class MiHashMap
         frases = new String[0];
     }
 
+    /**
+     * Indica si existe un elemento con la clave indicada dentro del repositorio
+     * @param elemento número del que se desea saber si existe
+     * @return devuelve true si encuentra una coincidencia, sino devuelbe false
+     */
+    public boolean containsKey(String clave){
+        boolean exist = false;
+        int cont = 0;
+        while(cont < frases.length && !exist){
+            if(frases[cont] == clave){exist = true;}
+            cont++;
+        }
+        return exist;
+    }
+
 }

@@ -20,7 +20,7 @@ public class MiHashMap
         enteros = new int[0];
         frases = new String[0];
     }
-    
+
     /**
      * Introduce en el objeto los dos parametros que se relacionan entre si.
      * @param String clave  añade objeto String a la coleccion
@@ -40,8 +40,12 @@ public class MiHashMap
             enteros[cont-1] = valor;
         }
         else{
-            frases[cont] = clave;
-            enteros[cont] = valor;
+            int[] otroEntero = new int[enteros.length + 1];        
+            String[] otraFrase = new String[enteros.length + 1];
+            otraFrase[cont] = clave;
+            otroEntero[cont] = valor;
+            frases = otraFrase;
+            enteros = otroEntero;
         }
         return aux;
     }
@@ -76,6 +80,33 @@ public class MiHashMap
      */
     public int size(){
         return enteros.length;
+    }   
+
+    /**
+     * Devuelve el elemento en la posición indicada
+     * @returm elemento que se encuentra en dicha posición, de no haberlo devuelve -1
+     */
+    public int remove(String clave){
+        boolean exist = false;
+        int rem = get(clave);
+        if(rem != -1){
+            int[] aux = new int[enteros.length - 1];
+            String[] aux2 = new String[enteros.length - 1];
+            int cont2 = 0;
+            for(int cont = 0; cont < enteros.length-1; cont++){
+                if(frases[cont] == clave){
+                    cont2++;
+                }
+                if(cont != enteros.length){
+                    aux[cont] = enteros[cont2];
+                    aux2[cont] = frases[cont2];
+                }
+                cont2++;
+            }
+            enteros = aux;
+            frases = aux2;
+        }
+        return rem ;
     }
 
 }
